@@ -1,26 +1,164 @@
 @import "tailwindcss";
+@plugin "tailwindcss-animate";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-acid: #B3FF00;
+  --font-bebas: var(--font-bebas-primary), sans-serif;
+  --font-rajdhani: var(--font-rajdhani-primary), sans-serif;
+  --font-space: var(--font-space-primary), monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer utilities {
+  .text-glow {
+    text-shadow: 0 0 30px #B3FF00, 0 0 60px #b3ff0066;
+  }
+  
+  .glass-card {
+    background-color: rgba(179, 255, 0, 0.04);
+    border: 1px solid rgba(179, 255, 0, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  
+  .glass-card-hover {
+    transition: all 0.3s ease;
+  }
+  
+  .glass-card-hover:hover {
+    border-color: rgba(179, 255, 0, 0.4);
+    transform: translateY(-6px);
+    box-shadow: inset 0 0 20px rgba(179, 255, 0, 0.05);
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/* Custom Selection */
+::selection {
+  background: var(--acid);
+  color: #000000;
+}
+
+/* Hide scrollbar for seamless Lenis scrolling */
+::-webkit-scrollbar {
+  display: none;
+}
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* For Splitting.js */
+.word {
+  display: inline-block;
+  white-space: nowrap; /* Prevent words from breaking mid-character */
+}
+.char {
+  display: inline-block;
+}
+
+/* Logo Glitch Animation */
+.logo-glitch {
+  animation: logo-glitch 0.4s cubic-bezier(.25, .46, .45, .94) both 2;
+}
+
+@keyframes logo-glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); text-shadow: -2px 0 red, 2px 0 blue; }
+  40% { transform: translate(-2px, -2px); text-shadow: 2px 0 red, -2px 0 blue; }
+  60% { transform: translate(2px, 2px); text-shadow: -2px 0 red, 2px 0 blue; }
+  80% { transform: translate(2px, -2px); text-shadow: 2px 0 red, -2px 0 blue; }
+  100% { transform: translate(0); }
+}
+
+/* Hero Cinematic Composition */
+.hero-video {
+  /* Using standard Tailwind classes for pos/sizing where possible, leaving custom properties here */
+  opacity: 0.75;
+  filter: saturate(1.4) hue-rotate(10deg) brightness(0.85) contrast(1.1);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    /* Left edge fade to black — where text lives */
+    linear-gradient(to right,
+      rgba(0,0,0,0.92) 0%,
+      rgba(0,0,0,0.6) 40%,
+      rgba(0,0,0,0.1) 70%,
+      transparent 100%
+    ),
+    /* Bottom fade for stats row */
+    linear-gradient(to top,
+      rgba(0,0,0,0.95) 0%,
+      transparent 35%
+    ),
+    /* Top fade for nav */
+    linear-gradient(to bottom,
+      rgba(0,0,0,0.7) 0%,
+      transparent 25%
+    );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  /* Push content LEFT — let character breathe on right */
+  max-width: 680px;
+  margin-left: 0;
+  padding-left: 80px;
+  text-align: left;
+}
+
+.hero-title {
+  text-align: left;
+  font-size: clamp(80px, 9vw, 130px);
+}
+
+.hero-sub {
+  text-align: left;
+  max-width: 520px;
+}
+
+.hero-buttons {
+  justify-content: flex-start;
+}
+
+.hero-scanlines {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.08) 2px,
+    rgba(0,0,0,0.08) 4px
+  );
+  opacity: 0.4;
+}
+
+.hero-divider {
+  position: absolute;
+  left: 52%;
+  top: 15%;
+  bottom: 15%;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(179,255,0,0.6) 30%,
+    rgba(179,255,0,0.8) 50%,
+    rgba(179,255,0,0.6) 70%,
+    transparent
+  );
+  box-shadow: 0 0 20px rgba(179,255,0,0.4),
+              0 0 40px rgba(179,255,0,0.2);
+  z-index: 3;
 }
