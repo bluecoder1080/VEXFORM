@@ -204,7 +204,7 @@ export default function Hero() {
         </div>
 
         {/* Stats Row */}
-        <div ref={statsRef} className="mt-20 flex flex-wrap gap-12 border-t border-white/10 pt-10 w-full max-w-3xl backdrop-blur-[2px]">
+        <div ref={statsRef} className="mt-20 flex flex-wrap gap-6 md:gap-12 border-t border-white/10 pt-10 w-full max-w-3xl backdrop-blur-[2px]">
           <div className="flex flex-col items-center">
             <span id="stat-sites" className="font-bebas text-5xl text-acid">0+</span>
             <span className="font-space text-xs text-white/50 uppercase mt-2">Sites Launched</span>
