@@ -150,7 +150,7 @@ export default function Hero() {
           muted 
           loop 
           playsInline 
-          className="hero-video absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 min-w-full min-h-full object-cover object-[center_top] pointer-events-none"
+          className="hero-video absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 min-w-full min-h-full object-cover object-[75%_top] md:object-[center_top] pointer-events-none"
         />
       </div>
 

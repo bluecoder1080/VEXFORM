@@ -89,9 +89,9 @@ body {
     /* Left edge fade to black — where text lives */
     linear-gradient(to right,
       rgba(0,0,0,0.92) 0%,
-      rgba(0,0,0,0.6) 40%,
-      rgba(0,0,0,0.1) 70%,
-      transparent 100%
+      rgba(0,0,0,0.7) 30%,
+      rgba(0,0,0,0.2) 60%,
+      transparent 80%
     ),
     /* Bottom fade for stats row */
     linear-gradient(to top,
@@ -103,6 +103,26 @@ body {
       rgba(0,0,0,0.7) 0%,
       transparent 25%
     );
+}
+
+@media (min-width: 768px) {
+  .hero-overlay {
+    background:
+      linear-gradient(to right,
+        rgba(0,0,0,0.92) 0%,
+        rgba(0,0,0,0.6) 40%,
+        rgba(0,0,0,0.1) 70%,
+        transparent 100%
+      ),
+      linear-gradient(to top,
+        rgba(0,0,0,0.95) 0%,
+        transparent 35%
+      ),
+      linear-gradient(to bottom,
+        rgba(0,0,0,0.7) 0%,
+        transparent 25%
+      );
+  }
 }
 
 .hero-content {
